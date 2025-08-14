@@ -1,0 +1,222 @@
+/* =========================
+   THEME + RESET
+========================= */
+:root {
+  --bg: #1e1e1e;
+  --panel: #252526;
+  --panel-2: #2e2e2e;
+  --border: #2a2a2a;
+  --text: #e8e8e8;
+  --muted: #b7b7b7;
+  --primary: #0e639c;
+  --primary-600: #1177bb;
+  --radius: 12px;
+  --shadow: 0 14px 32px rgba(0,0,0,.35);
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html, body { 
+  height: 100%; 
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  background: #1b1b1c;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: .2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header h1::before { 
+  content: "💻"; 
+}
+
+#downloadBtn {
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, transform .05s ease, box-shadow .2s ease;
+}
+
+#downloadBtn:hover { 
+  background: var(--primary-600); 
+}
+
+#downloadBtn:active { 
+  transform: translateY(1px); 
+}
+
+/* =========================
+   LAYOUT
+========================= */
+main {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  overflow: hidden; /* keeps panes tidy */
+}
+
+/* =========================
+   LEFT: EDITOR STACK
+========================= */
+.editor-section {
+  flex: 1 1 52%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;      /* ✅ smooth scrolling for editor column */
+  background: var(--bg);
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.editor h2 {
+  background: var(--panel-2);
+  color: #dcdcdc;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Textareas behave like lightweight editors */
+textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 150px;
+  padding: 14px 16px;
+  background: #1f1f1f;
+  color: #d4d4d4;
+  border: none;
+  outline: none;
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.45;
+  tab-size: 2;
+  resize: vertical;      /* allow vertical resize if you want */
+  overflow: auto;        /* ✅ internal scroll when content grows */
+  white-space: pre;      /* keep formatting */
+  caret-color: #fff;
+}
+
+textarea:focus {
+  box-shadow: inset 0 0 0 2px rgba(14, 99, 156, .35);
+}
+
+/* =========================
+   RIGHT: PREVIEW
+========================= */
+.preview-section {
+  flex: 1 1 48%;
+  padding: 16px;
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+  display: flex;
+  overflow: hidden;
+}
+
+.preview-section iframe {
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+/* =========================
+   SCROLLBARS (WEBKIT)
+========================= */
+.editor-section::-webkit-scrollbar,
+textarea::-webkit-scrollbar,
+.preview-section::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.editor-section::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb,
+.preview-section::-webkit-scrollbar-thumb {
+  background: #4b4b4b;
+  border-radius: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover { 
+  background: #6a6a6a; 
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1100px) {
+  main { 
+    flex-direction: column; 
+  }
+  .editor-section,
+  .preview-section {
+    flex: none;
+    width: 100%;
+    height: 50vh;       /* split vertically on small screens */
+  }
+  .preview-section { 
+    border-top: 1px solid var(--border); 
+  }
+}
+
+/* =========================
+   CODE EDITOR BLOCK
+========================= */
+.code-editor {
+  background: #1e1e1e;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.code-editor h3 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Editor with Live Preview</title>
+  <link href="style.css" rel="stylesheet" />
+
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1> Live Code Editor</h1>
+    <button id="downloadBtn">Download Project</button>
+  </header>
+
+  <main>
+    <section class="editor-section">
+      <div class="editor">
+        <h2>HTML</h2>
+        <textarea id="htmlCode" spellcheck="false"></textarea>
+      </div>
+      <div class="editor">
+        <h2>CSS</h2>
+        <textarea id="cssCode" spellcheck="false"></textarea>
+      </div>
+      <div class="editor">
+        <h2>JavaScript</h2>
+        <textarea id="jsCode" spellcheck="false"></textarea>
+      </div>
+    </section>
+
+    <section class="preview-section">
+      <iframe id="preview"></iframe>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
